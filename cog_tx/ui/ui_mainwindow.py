@@ -1,0 +1,91 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'qt_mainwindow.ui'
+#
+# Created by: PyQt5 UI code generator 5.10.1
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(800, 600)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.gridLayoutWidget = QtWidgets.QWidget(self.centralwidget)
+        self.gridLayoutWidget.setGeometry(QtCore.QRect(190, 80, 391, 291))
+        self.gridLayoutWidget.setObjectName("gridLayoutWidget")
+        self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setObjectName("gridLayout")
+        self.label_3 = QtWidgets.QLabel(self.gridLayoutWidget)
+        self.label_3.setObjectName("label_3")
+        self.gridLayout.addWidget(self.label_3, 2, 0, 1, 1)
+        self.label_2 = QtWidgets.QLabel(self.gridLayoutWidget)
+        self.label_2.setObjectName("label_2")
+        self.gridLayout.addWidget(self.label_2, 1, 0, 1, 1)
+        self.label = QtWidgets.QLabel(self.gridLayoutWidget)
+        self.label.setObjectName("label")
+        self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
+        self.modulation_comboBox = QtWidgets.QComboBox(self.gridLayoutWidget)
+        self.modulation_comboBox.setObjectName("modulation_comboBox")
+        self.gridLayout.addWidget(self.modulation_comboBox, 1, 1, 1, 1)
+        self.center_frequency_mhz_spinBox = QtWidgets.QDoubleSpinBox(self.gridLayoutWidget)
+        self.center_frequency_mhz_spinBox.setObjectName("center_frequency_mhz_spinBox")
+        self.gridLayout.addWidget(self.center_frequency_mhz_spinBox, 0, 1, 1, 1)
+        self.symbol_rate_kBd_spinBox = QtWidgets.QDoubleSpinBox(self.gridLayoutWidget)
+        self.symbol_rate_kBd_spinBox.setObjectName("symbol_rate_kBd_spinBox")
+        self.gridLayout.addWidget(self.symbol_rate_kBd_spinBox, 2, 1, 1, 1)
+        self.number_of_symbols_spinBox = QtWidgets.QSpinBox(self.gridLayoutWidget)
+        self.number_of_symbols_spinBox.setObjectName("number_of_symbols_spinBox")
+        self.gridLayout.addWidget(self.number_of_symbols_spinBox, 3, 1, 1, 1)
+        self.label_4 = QtWidgets.QLabel(self.gridLayoutWidget)
+        self.label_4.setObjectName("label_4")
+        self.gridLayout.addWidget(self.label_4, 3, 0, 1, 1)
+        self.gridLayoutWidget_2 = QtWidgets.QWidget(self.centralwidget)
+        self.gridLayoutWidget_2.setGeometry(QtCore.QRect(495, 439, 171, 71))
+        self.gridLayoutWidget_2.setObjectName("gridLayoutWidget_2")
+        self.gridLayout_2 = QtWidgets.QGridLayout(self.gridLayoutWidget_2)
+        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout_2.setObjectName("gridLayout_2")
+        self.transmit_button = QtWidgets.QPushButton(self.gridLayoutWidget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.transmit_button.sizePolicy().hasHeightForWidth())
+        self.transmit_button.setSizePolicy(sizePolicy)
+        self.transmit_button.setObjectName("transmit_button")
+        self.gridLayout_2.addWidget(self.transmit_button, 0, 1, 1, 1)
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 22))
+        self.menubar.setObjectName("menubar")
+        self.menuFile = QtWidgets.QMenu(self.menubar)
+        self.menuFile.setObjectName("menuFile")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+        self.actionExit = QtWidgets.QAction(MainWindow)
+        self.actionExit.setObjectName("actionExit")
+        self.menuFile.addSeparator()
+        self.menuFile.addSeparator()
+        self.menuFile.addAction(self.actionExit)
+        self.menubar.addAction(self.menuFile.menuAction())
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.label_3.setText(_translate("MainWindow", "Symbol Rate (kBd)"))
+        self.label_2.setText(_translate("MainWindow", "Modulation"))
+        self.label.setText(_translate("MainWindow", "Center Frequency (MHz)"))
+        self.label_4.setText(_translate("MainWindow", "Number of Symbols"))
+        self.transmit_button.setText(_translate("MainWindow", "Transmit"))
+        self.menuFile.setTitle(_translate("MainWindow", "File"))
+        self.actionExit.setText(_translate("MainWindow", "Exit"))
+
