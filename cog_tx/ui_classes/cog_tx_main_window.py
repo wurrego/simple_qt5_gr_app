@@ -17,6 +17,9 @@ class CogTransmit_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, QObject):
     tx_modulation_type = None
     tx_number_of_symbols = 0
     transmission_count = 0
+    gain = 0
+    filter_bw = 0.0
+    usrp_ip = None
     parent = None
 
     def __init__(self, parent=None):
@@ -49,9 +52,15 @@ class CogTransmit_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, QObject):
         self.center_frequency_mhz_spinBox.setSingleStep(.01)
         self.center_frequency_mhz_spinBox.setValue(895)
 
+        # Gain Bounds
+        self.gain_spinBox.setMinimum(0)
+        self.gain_spinBox.setMaximum(30)
+        self.gain_spinBox.setSingleStep(1)
+        self.gain_spinBox.setValue(10)
+
         # symbol rate bounds
         self.symbol_rate_kBd_spinBox.setMinimum(2.4)
-        self.symbol_rate_kBd_spinBox.setMaximum(968)
+        self.symbol_rate_kBd_spinBox.setMaximum(1024)
         self.symbol_rate_kBd_spinBox.setSingleStep(2.4)
         self.symbol_rate_kBd_spinBox.setValue(200.0)
 
@@ -69,6 +78,16 @@ class CogTransmit_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, QObject):
         self.modulation_comboBox.addItem("QAM16")
         self.modulation_comboBox.addItem("PI4QPSK")
         self.modulation_comboBox.addItem("GMSK")
+
+        # RRC Filter Excess Bandwidth (Beta)
+        self.filter_excess_bw_SpinBox.setMinimum(0)
+        self.filter_excess_bw_SpinBox.setMaximum(1)
+        self.filter_excess_bw_SpinBox.setSingleStep(.01)
+        self.filter_excess_bw_SpinBox.setValue(0.35)
+
+        # USRP Device IPv4 Address
+        self.device_ip_lineEdit.setText("192.168.10.2")
+
 
     def on_transmitButton_Clicked(self):
 
@@ -89,6 +108,9 @@ class CogTransmit_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, QObject):
         self.tx_symbol_rate_bd = self.symbol_rate_kBd_spinBox.value() * 1e3
         self.tx_modulation_type = self.modulation_comboBox.currentText()
         self.tx_number_of_symbols = self.number_of_symbols_spinBox.value()
+        self.gain = self.gain_spinBox.value()
+        self.filter_bw = self.filter_excess_bw_SpinBox.value()
+        self.usrp_ip = self.device_ip_lineEdit.text()
 
     def stop_transmit(self):
 
@@ -108,7 +130,7 @@ class CogTransmit_MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, QObject):
         self.transmission_count += 1
 
         # transmit the user selected signal
-        self.transmitter = transmit(self.cbp, _tx_id=self.transmission_count, _center_freq_hz=self.tx_center_freq_hz, _symbol_rate_Bd=self.tx_symbol_rate_bd, _modulation_type=self.tx_modulation_type, _gain_dB=5, _number_of_symbols=self.tx_number_of_symbols, _samples_per_symbol=2, _excess_bw = 0.35)
+        self.transmitter = transmit(self.cbp, _tx_id=self.transmission_count, _center_freq_hz=self.tx_center_freq_hz, _symbol_rate_Bd=self.tx_symbol_rate_bd, _modulation_type=self.tx_modulation_type, _gain_dB=self.gain, _number_of_symbols=self.tx_number_of_symbols, _samples_per_symbol=2, _excess_bw = self.filter_bw, device_ip = self.usrp_ip)
 
         self.transmitter.start()
 

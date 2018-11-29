@@ -30,7 +30,8 @@ class usrp_head_sink(gr.hier_block2):
 
         self.head = blocks.head(gr.sizeof_gr_complex * 1, N)
 
-        self.usrp = uhd.usrp_sink(",".join(("addr=" + ipv4_address, "")), uhd.stream_args(cpu_format="fc32", channels=range(1), ), )
+        print("Using USRP Device with IPv4 Address: " + str(ipv4_address))
+        self.usrp = uhd.usrp_sink(",".join(("addr=" + str(ipv4_address), "")), uhd.stream_args(cpu_format="fc32", channels=range(1), ), )
 
         self.usrp.set_center_freq(center_freq_hz, 0)
         self.usrp.set_samp_rate(sample_rate_hz)

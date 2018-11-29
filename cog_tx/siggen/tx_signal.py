@@ -28,7 +28,7 @@ class transmit(gr.top_block):
     # grc graph parameters
     source = None
 
-    def __init__(self, cbp, _tx_id, _center_freq_hz, _symbol_rate_Bd, _modulation_type, _gain_dB, _number_of_symbols, _samples_per_symbol=2, _excess_bw = 0.35):
+    def __init__(self, cbp, _tx_id, _center_freq_hz, _symbol_rate_Bd, _modulation_type, _gain_dB, _number_of_symbols, _samples_per_symbol=2, _excess_bw = 0.35, device_ip = "192.168.10.2"):
 
         gr.top_block.__init__(self, "Top Block")
 
@@ -42,6 +42,7 @@ class transmit(gr.top_block):
         self.number_of_symbols = _number_of_symbols
         self.samples_per_symbol = _samples_per_symbol
         self.excess_bw = _excess_bw
+        self.usrp_device_ip = device_ip
 
         # calculate other transmitter parameters
         self.sample_rate_hz = self.symbol_rate_Bd * self.samples_per_symbol
@@ -100,7 +101,7 @@ class transmit(gr.top_block):
         self.mod = self.parse_mod_type(self.modulation_type)
 
         # sink block
-        self.sink = usrp_head_sink(center_freq_hz=self.center_freq_hz, sample_rate_hz=self.sample_rate_hz, antenna=self.antenna, gain_dB=self.gain_dB, ipv4_address='192.168.30.2',N=samples_to_tx)
+        self.sink = usrp_head_sink(center_freq_hz=self.center_freq_hz, sample_rate_hz=self.sample_rate_hz, antenna=self.antenna, gain_dB=self.gain_dB, ipv4_address=self.usrp_device_ip, N=samples_to_tx)
 
         # connect
         self.connect(self.source, self.mod, self.sink)

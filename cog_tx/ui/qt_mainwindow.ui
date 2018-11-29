@@ -24,14 +24,27 @@
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="2" column="0">
+     <item row="1" column="1">
+      <widget class="QSpinBox" name="gain_spinBox"/>
+     </item>
+     <item row="6" column="1">
+      <widget class="QLineEdit" name="device_ip_lineEdit"/>
+     </item>
+     <item row="3" column="0">
       <widget class="QLabel" name="label_3">
        <property name="text">
         <string>Symbol Rate (kBd)</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>USRP IPv4 Address</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
       <widget class="QLabel" name="label_2">
        <property name="text">
         <string>Modulation</string>
@@ -45,24 +58,41 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
+     <item row="2" column="1">
       <widget class="QComboBox" name="modulation_comboBox"/>
      </item>
      <item row="0" column="1">
       <widget class="QDoubleSpinBox" name="center_frequency_mhz_spinBox"/>
      </item>
-     <item row="2" column="1">
-      <widget class="QDoubleSpinBox" name="symbol_rate_kBd_spinBox"/>
-     </item>
-     <item row="3" column="1">
+     <item row="4" column="1">
       <widget class="QSpinBox" name="number_of_symbols_spinBox"/>
      </item>
-     <item row="3" column="0">
+     <item row="3" column="1">
+      <widget class="QDoubleSpinBox" name="symbol_rate_kBd_spinBox"/>
+     </item>
+     <item row="4" column="0">
       <widget class="QLabel" name="label_4">
        <property name="text">
         <string>Number of Symbols</string>
        </property>
       </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Gain (dB)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Filter Excess BW (β)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QDoubleSpinBox" name="filter_excess_bw_SpinBox"/>
      </item>
     </layout>
    </widget>
